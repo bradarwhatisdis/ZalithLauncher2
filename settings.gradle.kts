@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ZalithLauncher"
+rootProject.name = "OpenLauncher"
 include(":ZalithLauncher")
 include(":LWJGL")
 include(":LayerController")

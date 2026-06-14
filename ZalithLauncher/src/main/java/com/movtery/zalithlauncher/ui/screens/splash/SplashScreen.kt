@@ -26,6 +26,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -83,13 +85,16 @@ private fun TopBar(
     CompositionLocalProvider(
         LocalContentColor provides contentColor
     ) {
-        Row(
+        Column(
             modifier = modifier,
-            horizontalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
+            Text(text = BuildKeys.LAUNCHER_NAME)
             Text(
-                modifier = Modifier.align(Alignment.CenterVertically),
-                text = BuildKeys.LAUNCHER_NAME
+                text = "Unofficial Modified Version",
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Light
             )
         }
     }
