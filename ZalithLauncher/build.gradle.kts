@@ -125,10 +125,6 @@ android {
         buildConfig = true
         prefab = true
     }
-    lint {
-        checkReleaseBuilds = false
-    }
-
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
