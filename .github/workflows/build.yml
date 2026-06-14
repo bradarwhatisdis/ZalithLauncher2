@@ -16,6 +16,10 @@ on:
         required: false
       CURSEFORGE_API_KEY:
         required: false
+      KEYSTORE_RELEASE:
+        required: false
+      KEYSTORE_DEBUG:
+        required: false
 
 jobs:
   build:
@@ -31,6 +35,8 @@ jobs:
       STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
       OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
       CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+      KEYSTORE_RELEASE: ${{ secrets.KEYSTORE_RELEASE }}
+      KEYSTORE_DEBUG: ${{ secrets.KEYSTORE_DEBUG }}
 
     steps:
       - name: Checkout
@@ -48,6 +54,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
         with:
           add-job-summary: "on-failure"
+
+      - name: Decode Keystore
+        run: |
+          echo "$KEYSTORE_RELEASE" | base64 -d > ZalithLauncher/open_launcher.jks || true
+          echo "$KEYSTORE_DEBUG" | base64 -d > ZalithLauncher/open_launcher_debug.jks || true
 
       - name: Build APK for ${{ matrix.arch }}
         run: |
