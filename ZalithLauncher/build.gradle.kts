@@ -125,6 +125,10 @@ android {
         buildConfig = true
         prefab = true
     }
+    lint {
+        disable.add("ExtraTranslation")
+    }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
