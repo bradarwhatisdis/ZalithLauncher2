@@ -57,8 +57,12 @@ jobs:
 
       - name: Decode Keystore
         run: |
-          echo "$KEYSTORE_RELEASE" | base64 -d > ZalithLauncher/open_launcher.jks || true
-          echo "$KEYSTORE_DEBUG" | base64 -d > ZalithLauncher/open_launcher_debug.jks || true
+          if [ -n "$KEYSTORE_RELEASE" ]; then
+            echo "$KEYSTORE_RELEASE" | base64 -d > ZalithLauncher/open_launcher.jks
+          fi
+          if [ -n "$KEYSTORE_DEBUG" ]; then
+            echo "$KEYSTORE_DEBUG" | base64 -d > ZalithLauncher/open_launcher_debug.jks
+          fi
 
       - name: Build APK for ${{ matrix.arch }}
         run: |
