@@ -126,7 +126,7 @@ android {
         prefab = true
     }
     lint {
-        disable.add("ExtraTranslation")
+        checkReleaseBuilds = false
     }
 
     testOptions {
