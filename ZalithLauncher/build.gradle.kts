@@ -53,9 +53,9 @@ android {
         }
         create("debugBuild") {
             storeFile = file("open_launcher_debug.jks")
-            storePassword = defaultStorePassword
+            storePassword = getKeyFromLocal("STORE_PASSWORD", ".store_password.txt")
             keyAlias = "open_launcher_debug"
-            keyPassword = defaultKeyPassword
+            keyPassword = getKeyFromLocal("KEY_PASSWORD", ".key_password.txt")
         }
     }
 
